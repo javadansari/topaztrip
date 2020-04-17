@@ -12,5 +12,17 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
+
+
+
+Route::get('/trip/index' , 'TripController@index');
+Route::get('/trip/create' , 'TripController@create');
+Route::post('/trip/create','TripController@store');
+
+
+Route::get('/admin/property/index' , 'PropertyController@index');
+Route::get('/admin/property/create' , 'PropertyController@create');
+Route::post('/admin/property/create','PropertyController@store');
+

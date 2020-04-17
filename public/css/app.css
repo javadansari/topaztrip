@@ -1,0 +1,42 @@
+@font-face {
+    font-family: 'B Nazanin';
+    src: url('/fonts/bnazanin.ttf') format('truetype')
+
+}
+
+
+select {
+    font-family: "B Nazanin";
+}
+
+.jj-text {
+    font-family: "B Nazanin";
+}
+
+.jj-nav {
+    margin: 5px;
+}
+
+
+.jj-base-trip-card {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 75ch;
+}
+
+.jj-bg-search {
+    background-color: #ff5f5f !important;
+}
+.jj-text-white::placeholder {
+    color: #ffffff ;
+}
+.jj-text-white {
+    color: #ffffff !important;
+}
+.jj-text-black::placeholder {
+    color: #000000;
+}
+.jj-text-black {
+    color: #000000 !important;
+}
