@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Property;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 
 class PropertyController extends Controller
 {
@@ -41,8 +43,19 @@ class PropertyController extends Controller
      */
     public function store()
     {
-        dd(request()->all());
+             $validate_data = Validator::make(request()->all() , [
+                 'parent' => 'required',
+                 'name' => 'required|min:3|max:50',
+             ])->validated();
+
+        if($validate_data['parent']==0) $validate_data['parent']=null;
+        Property::create([
+            'parent' => $validate_data['parent'],
+            'name' => $validate_data['name'],
+        ]);
+        return redirect('/admin/property/index');
     }
+
 
     /**
      * Display the specified resource.

@@ -22,8 +22,8 @@
         @csrf
         <div class="row">
             <div class="col">
-                <label for="project">Project list:</label>
-                <select class="form-control" name="project">
+                <label for="project">Property list:</label>
+                <select class="form-control" name="parent">
                     <option  value="0">-- جدید</option>
                     @foreach($properties as $property)
                         <option value="{{$property->id}}">{{ $property->name }}</option>

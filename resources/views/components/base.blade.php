@@ -9,7 +9,7 @@
             <div class="col-md-4">
                 <!--Zoom effect-->
                 <div class="img-hover-zoom">
-                    <img src="https://cutt.ly/Zt9mi7o" class="img-thumbnail">
+                    <img src="" class="img-thumbnail">
                 </div>
                 <div class="card-body jj-base-trip-card jj-text">
                     <h5 class="card-title"> {{$trip->name}}</h5>

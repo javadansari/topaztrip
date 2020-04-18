@@ -18,6 +18,7 @@ class CreateProperties extends Migration
             $table->integer('parent')->nullable();
             $table->integer('child')->nullable();
             $table->string('name');
+            $table->integer('sort')->default(1);
             $table->timestamps();
         });
     }

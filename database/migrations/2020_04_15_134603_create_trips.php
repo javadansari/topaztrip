@@ -19,9 +19,9 @@ class CreateTrips extends Migration
             $table->text('description');
             $table->string('slug');
             $table->integer('userID');
-            $table->integer('view');
+            $table->integer('view')->default(0);
             $table->string('picture');
-            $table->integer('group');
+            $table->integer('group')->default(0);
             $table->timestamps();
         });
     }

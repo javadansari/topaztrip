@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Trip;
+
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class TripController extends Controller
 {
@@ -31,7 +33,6 @@ class TripController extends Controller
      */
     public function create()
     {
-        //
         return view('trip/create');
     }
 
@@ -41,9 +42,23 @@ class TripController extends Controller
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store()
     {
-        //
+
+
+        $validate_data = Validator::make(request()->all(), [
+            'name' => 'required',
+            'description' => 'required',
+        ])->validated();
+
+        Trip::create([
+            'name' => $validate_data['name'],
+            'description' => $validate_data['description'],
+            'slug' => $validate_data['name'],
+            'userID' => 0,
+            'picture' => '',
+        ]);
+        return redirect('/trip/index');
     }
 
     /**
