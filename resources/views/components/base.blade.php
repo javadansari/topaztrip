@@ -9,12 +9,12 @@
             <div class="col-md-4">
                 <!--Zoom effect-->
                 <div class="img-hover-zoom">
-                    <img src="" class="img-thumbnail">
+                    <img src="{{ URL::to('/') }}/upload/images/{{$trip->picture}}" class="img-thumbnail">
                 </div>
                 <div class="card-body jj-base-trip-card jj-text">
                     <h5 class="card-title"> {{$trip->name}}</h5>
                     <p class="card-text"> {{$trip->description}}</p>
-                    <a href=" {{$trip->address}}" class="btn btn-primary">Go somewhere</a>
+                    <a href=" {{$trip->address}}" class="btn btn-success">بیشتر</a>
                 </div>
             </div>
 

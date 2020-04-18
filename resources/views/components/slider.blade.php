@@ -2,13 +2,13 @@
     {{--<div class="carousel-inner" style=" width:100%; height: 400px !important;">--}}
     <div class="carousel-inner" style=" width:100%; height: 500px !important;">
         <div class="carousel-item active carousel-zoom" data-interval="5000">
-            <img src="" class="d-block w-100 " alt="...">
+            <img src="/pic/main1.jpg" class="d-block w-100 " alt="...">
         </div>
         <div class="carousel-item carousel-zoom" data-interval="2000">
-            <img src="" class="d-block w-100 " alt="...">
+            <img src="/pic/main2.jpg" class="d-block w-100 " alt="...">
         </div>
         <div class="carousel-item carousel-zoom" data-interval="3000">
-            <img src="" class="d-block w-100 i" alt="...">
+            <img src="/pic/main3.jpg" class="d-block w-100 i" alt="...">
         </div>
     </div>
     <a class="carousel-control-prev" href="#carouselExampleInterval" role="button" data-slide="prev">

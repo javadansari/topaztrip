@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Trip;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
 class TripController extends Controller
@@ -18,6 +20,7 @@ class TripController extends Controller
     {
 
         //   $trips = Trip::get()->orderBy('id', 'desc')->take(2)->get()->reverse();
+
         $trips = Trip::take(20)->orderBy('id', 'desc')->get()->reverse();
 
         return view('trip/index',
@@ -49,14 +52,14 @@ class TripController extends Controller
         $validate_data = Validator::make(request()->all(), [
             'name' => 'required',
             'description' => 'required',
+            'file' => 'required|mimes:jpg,jpeg,png,gif|max:10240',
         ])->validated();
-
         Trip::create([
             'name' => $validate_data['name'],
             'description' => $validate_data['description'],
             'slug' => $validate_data['name'],
             'userID' => 0,
-            'picture' => '',
+            'picture' => $this->uploadImages($validate_data['file']),
         ]);
         return redirect('/trip/index');
     }
@@ -104,5 +107,13 @@ class TripController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function uploadImages($file)
+    {
+        $destinationPath = public_path("/upload/images/");
+        $filename =  Hash::make('secret').'.jpg';
+        $file->move($destinationPath, $filename);
+        return $filename;
     }
 }
