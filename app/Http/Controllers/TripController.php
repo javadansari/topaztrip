@@ -84,9 +84,10 @@ class TripController extends Controller
      */
     public function show()
     {
-dd(request()->all());
-        return view('trip/show');
-
+        $trip = Trip::where('id', request()->id)->get();
+        return view('trip/show',
+            ['trip' => $trip[0]]
+        );
     }
 
     /**
@@ -126,7 +127,7 @@ dd(request()->all());
     public function uploadImages($file)
     {
         $destinationPath = public_path("/upload/images/");
-        $filename = Hash::make('secret') . '.jpg';
+        $filename = MD5(Hash::make('secret') . Carbon::now()->toDateTimeString() .rand(1,999)) . '.jpg';
         $file->move($destinationPath, $filename);
         return $filename;
     }
