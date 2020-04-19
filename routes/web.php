@@ -20,6 +20,7 @@ Route::get('/', function () {
 Route::get('/trip/index' , 'TripController@index');
 Route::get('/trip/create' , 'TripController@create');
 Route::post('/trip/create','TripController@store');
+Route::get('/trip/show','TripController@show');
 
 
 Route::get('/admin/property/index' , 'PropertyController@index');

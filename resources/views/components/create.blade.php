@@ -4,9 +4,8 @@
     $parents = DB::table('properties')->get()->whereNull('parent');
 
 
-
 @endphp
-
+@if($errors->any())
 <div class="alert alert-danger jj-text">
     <ul>
 
@@ -14,9 +13,8 @@
             <li>{{$error}}</li>
         @endforeach
     </ul>
-
 </div>
-
+@endif
 <form class="jj-text rounded p-2" action="\trip\create" method="post" enctype="multipart/form-data">
 
     @csrf
@@ -27,7 +25,9 @@
             <input type="text" name="name" class="form-control">
         </div>
         <div class="form-group col-md-6">
-            <label>فایل شاخص</label>
+
+            <label>عکس شاخص</label>
+
                 <input id="file" type="file" class="form-control form-control-file" name="file">
         </div>
     </div>
@@ -45,7 +45,7 @@
                     @php ($children = DB::table('properties')->get()->where('parent',$parent->id))
                     @foreach($children as $child)
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" name="tag-{{$child->id}}" value="1"
+                            <input class="form-check-input" type="checkbox" name="tagItems-{{$child->id}}" value="{{$child->id}}"
                                    id="defaultCheck">
                             <label class="form-check-label" for="defaultCheck2">
                                 {{$child->name}}

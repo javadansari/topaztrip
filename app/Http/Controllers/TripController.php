@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Tag;
 use App\Trip;
 
+use http\Env\Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Hash;
@@ -52,15 +54,25 @@ class TripController extends Controller
         $validate_data = Validator::make(request()->all(), [
             'name' => 'required',
             'description' => 'required',
-            'file' => 'required|mimes:jpg,jpeg,png,gif|max:10240',
+            'file' => 'required|mimes:jpg,jpeg|max:10240',
         ])->validated();
-        Trip::create([
+        $trip = Trip::create([
             'name' => $validate_data['name'],
             'description' => $validate_data['description'],
             'slug' => $validate_data['name'],
             'userID' => 0,
             'picture' => $this->uploadImages($validate_data['file']),
         ]);
+        foreach (array_keys(request()->all()) as $item) {
+            if (strpos(($item), 'tag') !== false) {
+                Tag::create([
+                    'tripID' => $trip->id,
+                    'PropertiesID' => request()->$item,
+                    'value' => 0,
+                ]);
+            }
+        }
+
         return redirect('/trip/index');
     }
 
@@ -70,9 +82,11 @@ class TripController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
-        //
+dd(request()->all());
+        return view('trip/show');
+
     }
 
     /**
@@ -112,8 +126,9 @@ class TripController extends Controller
     public function uploadImages($file)
     {
         $destinationPath = public_path("/upload/images/");
-        $filename =  Hash::make('secret').'.jpg';
+        $filename = Hash::make('secret') . '.jpg';
         $file->move($destinationPath, $filename);
         return $filename;
     }
+
 }
