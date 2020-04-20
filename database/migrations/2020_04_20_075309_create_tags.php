@@ -15,11 +15,16 @@ class CreateTags extends Migration
     {
         Schema::create('tags', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('tripID');
-            $table->integer('PropertiesID');
+            $table->unsignedBigInteger('trip_id');
+            $table->unsignedBigInteger('property_id');
             $table->text('value');
             $table->timestamps();
+
+
+            $table->foreign('trip_id')->references('id')->on('trips')->onDelete('cascade');
+            $table->foreign('property_id')->references('id')->on('properties')->onDelete('cascade');
         });
+
     }
 
     /**

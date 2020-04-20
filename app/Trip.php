@@ -8,4 +8,12 @@ class Trip extends Model
 {
 
     protected $fillable = ['name','description','slug','userID','picture'];
+
+
+    public function tags()
+    {
+        return $this->hasMany(Tag::class);
+    }
+
+
 }

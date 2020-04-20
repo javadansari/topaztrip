@@ -6,6 +6,7 @@ use App\Tag;
 use App\Trip;
 
 use http\Env\Response;
+use Illuminate\Database\Query\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Hash;
@@ -24,6 +25,57 @@ class TripController extends Controller
         //   $trips = Trip::get()->orderBy('id', 'desc')->take(2)->get()->reverse();
 
         $trips = Trip::take(20)->orderBy('id', 'desc')->get()->reverse();
+
+        return view('trip/index',
+            ['trips' => $trips]
+
+        );
+    }
+
+    public function jj()
+    {
+
+
+        return view('trip/jj'
+
+
+        );
+    }
+
+    public function search()
+    {
+        $validate_data = Validator::make(request()->all(), [
+            'search' => '',
+            'hows' => '',
+            'prices' => '',
+        ])->validated();
+
+//        $tags = Tag::Where('PropertiesID', $validate_data['hows'])
+//            ->orWhere('PropertiesID', $validate_data['prices'])
+//            ->get();
+        //  dd($tags, $validate_data['hows'], $validate_data['prices']);
+
+
+        //   $kk = '';
+        $tag = Trip::find(18);
+        dd($tag->tags);
+
+        $tags = Trip::find(18)->tags()->where('id', '6')->first();
+
+
+       // $trips = Trip::find(18)->tag;
+     //   $trips = Trip::has('tags')->get();
+        dd($tags);
+
+//        $trips = Trip::whereHas('tags',function (Builder $query){
+//                $query->where('id', 11);
+//
+//            })->get();
+           //where('PropertiesID', 0)
+
+        //     ->orWhere('name', 'like', '%' . $validate_data['search'] . '%')
+
+        //   $trips = Trip::take(20)->orderBy('id', 'desc')->get()->reverse();
 
         return view('trip/index',
             ['trips' => $trips]
@@ -66,8 +118,8 @@ class TripController extends Controller
         foreach (array_keys(request()->all()) as $item) {
             if (strpos(($item), 'tag') !== false) {
                 Tag::create([
-                    'tripID' => $trip->id,
-                    'PropertiesID' => request()->$item,
+                    'trip_id' => $trip->id,
+                    'property_id' => request()->$item,
                     'value' => 0,
                 ]);
             }
@@ -127,7 +179,7 @@ class TripController extends Controller
     public function uploadImages($file)
     {
         $destinationPath = public_path("/upload/images/");
-        $filename = MD5(Hash::make('secret') . Carbon::now()->toDateTimeString() .rand(1,999)) . '.jpg';
+        $filename = MD5(Hash::make('secret') . Carbon::now()->toDateTimeString() . rand(1, 999)) . '.jpg';
         $file->move($destinationPath, $filename);
         return $filename;
     }

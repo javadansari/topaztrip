@@ -1,8 +1,6 @@
 @php
     use Illuminate\Support\Facades\DB;
-    use Illuminate\Support\Facades\Redirect;
     $parents = DB::table('properties')->get()->whereNull('parent');
-
 
 @endphp
 @if($errors->any())

@@ -18,6 +18,8 @@ Route::get('/', function () {
 
 
 Route::get('/trip/index' , 'TripController@index');
+Route::get('/trip/jj' , 'TripController@jj');
+Route::post('/trip/search' , 'TripController@search');
 Route::get('/trip/create' , 'TripController@create');
 Route::post('/trip/create','TripController@store');
 Route::get('/trip/show','TripController@show');

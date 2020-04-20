@@ -1,7 +1,7 @@
 @php
     use Illuminate\Support\Facades\DB;
     $parents = DB::table('properties')->get()->whereNull('parent');
-    $tags = DB::table('tags')->get()->where('tripID',$trip->id);
+    $tags = DB::table('tags')->get()->where('trip_id',$trip->id);
 
 
 @endphp
@@ -24,7 +24,7 @@
                         @php($empty = true)
                         @foreach($children as $child)
                             @foreach($tags as $tag)
-                                @if($tag->PropertiesID == $child->id)
+                                @if($tag->property_id == $child->id)
                                     {{$child->name}}
                                     @php($empty = false)
                                 @endif
