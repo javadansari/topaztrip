@@ -55,23 +55,59 @@ class TripController extends Controller
 //            ->get();
         //  dd($tags, $validate_data['hows'], $validate_data['prices']);
 
+//        $trips = Trip::has('tags')
+//            ->where('property_id',$validate_data['hows'])
 
-        //   $kk = '';
-        $tag = Trip::find(18);
-        dd($tag->tags);
+        if ($validate_data['hows'] == 0 and $validate_data['prices'] == 0) {
 
-        $tags = Trip::find(18)->tags()->where('id', '6')->first();
-
-
-       // $trips = Trip::find(18)->tag;
-     //   $trips = Trip::has('tags')->get();
-        dd($tags);
+            $trips = Trip::
+            where('name', 'like', '%' . $validate_data['search'] . '%')
+                ->get();
+        } elseif ($validate_data['hows'] == 0) {
+            $trips = Trip::
+            WhereHas('tags', function ($query) use ($validate_data) {
+                $query->where('property_id', $validate_data['prices']);
+            })
+                ->where('name', 'like', '%' . $validate_data['search'] . '%')
+                ->get();
+        } elseif ($validate_data['prices'] == 0) {
+            $trips = Trip::
+            whereHas('tags', function ($query) use ($validate_data) {
+                $query->where('property_id', $validate_data['hows']);
+            })
+                ->where('name', 'like', '%' . $validate_data['search'] . '%')
+                ->get();
+        } else {
+            $trips = Trip::
+            whereHas('tags', function ($query) use ($validate_data) {
+                $query->where('property_id', $validate_data['hows']);
+            })
+                ->WhereHas('tags', function ($query) use ($validate_data) {
+                    $query->where('property_id', $validate_data['prices']);
+                })
+                ->where('name', 'like', '%' . $validate_data['search'] . '%')
+                ->get();
+        }
 
 //        $trips = Trip::whereHas('tags',function (Builder $query){
 //                $query->where('id', 11);
 //
 //            })->get();
-           //where('PropertiesID', 0)
+
+        //      dd($trips);
+//
+        //      $tags = Trip::find(18)->tags()->where('id', '6')->first();
+
+
+        // $trips = Trip::find(18)->tag;
+        //   $trips = Trip::has('tags')->get();
+        //      dd($tags);
+
+//        $trips = Trip::whereHas('tags',function (Builder $query){
+//                $query->where('id', 11);
+//
+//            })->get();
+        //where('PropertiesID', 0)
 
         //     ->orWhere('name', 'like', '%' . $validate_data['search'] . '%')
 

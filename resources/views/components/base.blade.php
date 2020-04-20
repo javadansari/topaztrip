@@ -10,7 +10,7 @@
                 <div class="card" style="width: 18rem;">
                     <div class="img-hover-zoom">
                         <a href="/trip/show?id={{$trip->id}}">
-                            <img src="{{ URL::to('/') }}/upload/images/{{$trip->picture}}" class="card-img-top">
+                            <img src="{{ URL::to('/') }}/upload/images/{{$trip->picture}}" class="card-img-top"
                         </a>
                     </div>
                     <div class="card-body">

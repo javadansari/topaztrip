@@ -1,7 +1,7 @@
 @php
     use Illuminate\Support\Facades\DB;
     $hows = DB::table('properties')->get()->where('parent',6);
-    $prices = DB::table('properties')->get()->where('parent',9);
+    $prices = DB::table('properties')->get()->where('parent',11);
 
 @endphp
 <div class="jj-bg-search jj-text pt-5 pb-5">
