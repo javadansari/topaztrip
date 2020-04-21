@@ -29,3 +29,7 @@ Route::get('/admin/property/index' , 'PropertyController@index');
 Route::get('/admin/property/create' , 'PropertyController@create');
 Route::post('/admin/property/create','PropertyController@store');
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

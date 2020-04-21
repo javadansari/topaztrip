@@ -2,8 +2,8 @@
     <meta charset="utf-8">
     ...
     {{-- ChartScript --}}
-    @if($usersChart)
-        {!! $usersChart->script() !!}
+    @if($usersChart ?? '')
+        {!! $usersChart ?? ''->script() !!}
     @endif
 </head>
 
@@ -15,6 +15,6 @@
     <h1>Users Graphs</h1>
 
     <div style="width: 50%">
-        {!! $usersChart->container() !!}
+        {!! $usersChart ?? ''->container() !!}
     </div>
 @endsection
