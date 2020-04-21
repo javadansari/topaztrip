@@ -1,7 +1,10 @@
 @php
     use Illuminate\Support\Facades\DB;
-    $hows = DB::table('properties')->get()->where('parent',6);
-    $prices = DB::table('properties')->get()->where('parent',11);
+//    dd(DB::table('properties')->find('name','هزینه'));
+    $howID = DB::table('properties')->get()->where('name','وسیله')->first()->id;
+    $priceID = DB::table('properties')->get()->where('name','هزینه')->first()->id;
+    $hows = DB::table('properties')->get()->where('parent',$howID);
+    $prices = DB::table('properties')->get()->where('parent',$priceID);
 
 @endphp
 <div class="jj-bg-search jj-text pt-5 pb-5">
