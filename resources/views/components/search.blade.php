@@ -1,6 +1,7 @@
 @php
     use Illuminate\Support\Facades\DB;
 //    dd(DB::table('properties')->find('name','هزینه'));
+
     $howID = DB::table('properties')->get()->where('name','وسیله')->first()->id;
     $priceID = DB::table('properties')->get()->where('name','هزینه')->first()->id;
     $hows = DB::table('properties')->get()->where('parent',$howID);
