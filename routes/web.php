@@ -11,6 +11,10 @@
 |
 */
 
+
+use Illuminate\Support\Facades\Auth;
+
+
 Route::get('/', function () {
     return view('index');
 });
@@ -18,7 +22,6 @@ Route::get('/', function () {
 
 
 Route::get('/trip/index' , 'TripController@index');
-Route::get('/trip/jj' , 'TripController@jj');
 Route::post('/trip/search' , 'TripController@search');
 Route::get('/trip/create' , 'TripController@create');
 Route::post('/trip/create','TripController@store');
@@ -28,4 +31,9 @@ Route::get('/trip/show','TripController@show');
 Route::get('/admin/property/index' , 'PropertyController@index');
 Route::get('/admin/property/create' , 'PropertyController@create');
 Route::post('/admin/property/create','PropertyController@store');
+
+
+Auth::routes();
+//Route::get('/home', 'HomeController@index');
+Route::get('/home', 'LoginController');
 
