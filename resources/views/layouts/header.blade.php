@@ -1,10 +1,15 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top jj-text jj-nav">
     <div class="container">
         <div class="col-md-2">
-                @if (Auth::check())
-                   <a class="divider navbar-text jj-text" href="#">{{Auth::user()->name}} خوش آمدی   <span class="divider">/</span></a>
-                   <a class="divider navbar-text jj-text" href="/logout">خروج</a>
-                @endif
+            @if (Auth::check())
+                <a class="divider navbar-text jj-text" href="#">{{Auth::user()->name}} خوش آمدی <span
+                            class="divider">/</span></a>
+                <a class="divider navbar-text jj-text" href="/logout">خروج</a>
+            @else
+                <a class="divider navbar-text jj-text" href="/register">ثبت نام<span
+                    class="divider">/</span></a>
+                <a class="divider navbar-text jj-text" href="/login">ورود</a>
+            @endif
 
 
         </div>
