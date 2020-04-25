@@ -11,7 +11,8 @@
                     <div class="img-hover-zoom">
                         <a href="/trip/show?id={{$trip->id}}">
                             @php($pic = 'upload/images/'.$trip->picture)
-                            <img src="{!! asset('public/upload/images/' .$trip->picture ) !!}" class="card-img-top">
+                            {{--<img src="{!! asset('public/upload/images/' .$trip->picture ) !!}" class="card-img-top">--}}
+                            <img src="{!! asset('upload/images/' .$trip->picture ) !!}" class="card-img-top">
                         </a>
                     </div>
                     <div class="card-body">
