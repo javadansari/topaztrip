@@ -17,6 +17,12 @@ Route::get('/', function () {
 
 
 
+Route::get('uploadImage', 'ImageUploadController@index');
+Route::post('upload/store', 'ImageUploadController@store');
+Route::post('delete', 'ImageUploadController@delete');
+
+
+
 Route::get('/trip/index' , 'TripController@index');
 Route::post('/trip/search' , 'TripController@search');
 Route::get('/trip/create' , 'TripController@create')->middleware('auth');
@@ -33,3 +39,5 @@ Auth::routes();
 
 
 Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
+
+

@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use QCod\ImageUp\HasImageUploads;
 
 class Trip extends Model
 {
