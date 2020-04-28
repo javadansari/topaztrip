@@ -27,6 +27,7 @@ Route::get('/trip/index' , 'TripController@index');
 Route::post('/trip/search' , 'TripController@search');
 Route::get('/trip/create' , 'TripController@create')->middleware('auth');
 Route::post('/trip/create','TripController@store')->middleware('auth');
+Route::get('/trip/upload','ImageUploadController@index')->middleware('auth');
 Route::get('/trip/show','TripController@show');
 
 

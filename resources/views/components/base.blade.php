@@ -1,3 +1,5 @@
+
+
 @section('style')
     <link rel="stylesheet" href="/css/zoom.css">
 @show

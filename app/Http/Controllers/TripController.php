@@ -139,6 +139,7 @@ class TripController extends Controller
     {
 
 
+
         $validate_data = Validator::make(request()->all(), [
             'name' => 'required',
             'description' => 'required',
@@ -161,7 +162,7 @@ class TripController extends Controller
             }
         }
 
-        return redirect('/trip/index');
+        return redirect('/trip/upload?id='.$trip->id) ;
     }
 
     /**

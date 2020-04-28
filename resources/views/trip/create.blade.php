@@ -8,7 +8,12 @@
 
 
 @section('content')
-    @include('components.create')
+    @if(request()->id == null)
+        @include('components.create')
+    @else
+        {{--@include('components.upload', ['id' => request()->id])--}}
+        @php(return view('uploadImage'))
+    @endif
 @endsection
 
 
