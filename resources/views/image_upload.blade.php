@@ -2,24 +2,24 @@
 @section('head')
     <meta name="_token" content="{{csrf_token()}}"/>
     {{--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">--}}
-    {{--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.0/min/dropzone.min.css">--}}
-    {{--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.js"></script>--}}
-    {{--<script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.0/dropzone.js"></script>--}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.0/min/dropzone.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.0/dropzone.js"></script>
 
     <!-- Bootstrap core CSS -->
     <link href="/css/bootstrap-rtl-min.css" rel="stylesheet">
     <!-- Custom styles for this template -->
 
     @yield('style')
-
+    <link href="/css/blog-home.css" rel="stylesheet">
+    <link href="/css/app.css" rel="stylesheet">
 
     <link href="/css/bootstrap-rtl-min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/dropzone.min.css">
     <script src="/vendor/jquery/jquery.min.js"></script>
     <script src="js/dropzone.js"></script>
 
-    <link href="/css/blog-home.css" rel="stylesheet">
-    <link href="/css/app.css" rel="stylesheet">
+
 @show
 
 @extends('layouts.master')

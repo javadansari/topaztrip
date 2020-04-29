@@ -16,10 +16,10 @@ class ImageUploadController extends Controller
      */
     public function index()
     {
-//        return view('trip/create',
-//            ['id', request()->id]);
+        return view('trip/upload',
+            ['id', request()->id]);
 
-        return view('image_upload');
+    //    return view('trip/upload');
     }
 
     /**
@@ -28,16 +28,16 @@ class ImageUploadController extends Controller
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store()
     {
 
-        $image = $request->file('file');
+        $image = request()->file('file');
         $imageName = $image->getClientOriginalName();
         $image->move(public_path('images'), $imageName);
         $imageUpload = new ImageUpload;
         $imageUpload->filename = $imageName;
-        $imageUpload->trip_id = 6;
-        Log::error($imageUpload);
+        $imageUpload->trip_id =  request()->id;
+        Log::error(request()->all());
         $imageUpload->save();
 
         return response()->json(['success' => $imageName]);

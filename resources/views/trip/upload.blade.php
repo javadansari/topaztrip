@@ -7,7 +7,8 @@
 
 
 @section('content')
-        @include('components.create')
+
+    @include('components.upload', ['id' => request()->id])
 @endsection
 
 
